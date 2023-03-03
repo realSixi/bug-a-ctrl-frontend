@@ -1,0 +1,33 @@
+.header {
+
+  background-color: #f6c42a;
+
+  background-image: url("../assets/marker_tl.png");
+  background-position: left 0px top 00px;
+  background-repeat: no-repeat;
+  background-size: 500px;
+
+  padding: 8px;
+
+
+  .container {
+    display: flex;
+    flex-direction: row;
+
+
+
+
+    .actions {
+      margin-left: auto;
+      align-self: end;
+      padding: 8px;
+    }
+  }
+
+  img.logo {
+    height: 100px;
+    max-width: 100%;
+    object-fit: contain
+  }
+
+}

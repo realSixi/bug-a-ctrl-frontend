@@ -1,25 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import './App.scss';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import Header from './components/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import loginSelector from './redux/login.selector';
+import Button from './components/Button';
+import { AppDispatch } from './redux/store';
+import loginRedux from './redux/login.redux';
+import Footer from './components/Footer';
 
 function App() {
+
+  const dispatch = useDispatch<AppDispatch>();
+  const isLoggedIn = useSelector(loginSelector.isLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(!isLoggedIn){
+      navigate("/login")
+    }
+
+  }, [isLoggedIn])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className={'content container'}>
+
+        {isLoggedIn && (
+          <div style={{ textAlign: 'right' }}>
+            <Button type={'plain'} onClick={() => {
+              dispatch(loginRedux.logout());
+            }}>
+              Abmelden
+            </Button>
+          </div>
+        )}
+
+        <Routes>
+          <Route path={'/'} element={<HomeScreen />} />
+          <Route path={'/login'} element={<LoginScreen />} />
+
+        </Routes>
+      </div>
+      <Footer/>
+    </>
   );
 }
 
