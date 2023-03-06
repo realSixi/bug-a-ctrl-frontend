@@ -29,7 +29,7 @@ const LoginScreen = () => {
     <p>
       <ol>
         <li>
-          Wir prüfen kurz <b>deine Twitch Daten</b>, damit du eine Verbindung zum Bagger herstellen können.
+          Wir prüfen kurz <b>deine Twitch Daten</b>, damit du eine Verbindung zum Bagger herstellen kannst.
         </li>
         <li>
           Wir brauchen von dir ein <b>aktuelles Passfoto</b> und
